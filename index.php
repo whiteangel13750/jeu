@@ -1,11 +1,19 @@
 <?php
 
 class Personnage {
-    public $nom;
-    public $force;
-    public $level;
-    public $health;
-    public $etat;
+    private $nom;
+    private $force;
+    private $level;
+    private $health;
+    private $etat;
+
+    public function __construct(string $nom, int $force, int $level=1, int $health, string $etat){
+        $this->nom =$nom;
+        $this->force =$force;
+        $this->level =$level;
+        $this->health=$health;
+        $this->etat =$etat;
+    }
 
     public function caracteristiques() {
         
@@ -20,29 +28,66 @@ class Personnage {
             $etat = "mort";
         }
         return $etat;
-}
-    };
+    }
 
-$perso1 = new Personnage();
-$perso1->nom ="Rose";
-$perso1->force = 12;
-$perso1->level = 1;
-$perso1->health = 100;
-$perso1->etat = "";
-$perso2 = new Personnage();
-$perso2->nom ="Jules";
-$perso2->force = 15;
-$perso2->level = 1;
-$perso2->health = 50;
-$perso2->etat = "";
-$perso3 = new Personnage();
-$perso3->nom ="Jean";
-$perso3->force = 6;
-$perso3->level = 1;
-$perso3->health = 0;
-$perso3->etat = "";
+    public function getNom() {
+        return $this->nom;
+    }
 
-var_dump($perso1);
+    public function setNom($nom) {
+        $this->nom = $nom;
+    }
 
-$perso1-> caracteristiques();
+    public function getForce() {
+        return $this->force;
+    }
+
+    public function setForce($force) {
+        $this->force = $force;
+    }
+
+    public function getLevel() {
+        return $this->level;
+    }
+
+    public function setLevel($level) {
+        $this->level = $level;
+    }
+
+    public function getHealth() {
+        return $this->health;
+    }
+
+    public function setHealth($health) {
+        $this->health = $health;
+    }
+    
+    public function getEtat() {
+        return $this->etat;
+    }
+
+    public function setEtat($etat) {
+        $this->etat = $etat;
+    }
+
+};
+
+
+$perso1 = new Personnage("Rose", 12,1,100,"");
+$perso2 = new Personnage("Jules",15,1,50,"");
+$perso3 = new Personnage("Jean",6,1,0,"");
+
+$perso2->setNom("Ulrick");
+
+$perso2->setForce(50);
+
+$perso2->setLevel(4);
+
+$perso2->setHealth(35);
+
+$perso2->setEtat("mort");
+
+echo "Le personnage" . " ". $perso2->getNom() ." ". "a une force de " ." ". $perso2->getForce() . "."
+."Il est de niveau"." ". $perso2->getLevel() ." ". "et il a une santé de " ." ". $perso2->getHealth() ."."." ". "Il est" ." ". $perso2->getEtat() . ".";
+
 
