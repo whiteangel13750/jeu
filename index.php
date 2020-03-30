@@ -15,12 +15,6 @@ class Personnage {
         $this->etat =$etat;
     }
 
-    public function caracteristiques() {
-        
-        echo "Le personnage" . " ". $this->nom ." ". "a une force de " ." ". $this->force . "."
-        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->etat() . ".";
-    }
-
     public function etat() {
         if ($this->health >=1) {
             $etat = "vivant";
@@ -29,6 +23,14 @@ class Personnage {
         }
         return $etat;
     }
+
+
+    public function caracteristiques() {
+        
+        echo "Le personnage" . " ". $this->nom ." ". "a une force de " ." ". $this->force . "."
+        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->etat() . ".";
+    }
+
 
     public function getNom() {
         return $this->nom;
@@ -95,7 +97,7 @@ echo "Le personnage" . " ". $perso2->getNom() ." ". "a une force de " ." ". $per
 ."Il est de niveau"." ". $perso2->getLevel() ." ". "et il a une santé de " ." ". $perso2->getHealth() ."."." ". "Il est" ." ". $perso2->getEtat() . ".";
 
 echo "Le personnage" . " ". $perso1->getNom() ." ". "a une force de " ." ". $perso1->getForce() . "."
-."Il est de niveau"." ". $perso1->getLevel() ." ". "et il a une santé de " ." ". $perso1->getHealth() ."."." ". "Il est" ." ". $perso2->getEtat() . ".";
+."Il est de niveau"." ". $perso1->getLevel() ." ". "et il a une santé de " ." ". $perso1->getHealth() ."."." ". "Il est" ." ". $perso1->getEtat() . ".";
 
 echo "Le personnage" . " ". $perso3->getNom() ." ". "a une force de " ." ". $perso3->getForce() . "."
-."Il est de niveau"." ". $perso3->getLevel() ." ". "et il a une santé de " ." ". $perso3->getHealth() ."."." ". "Il est" ." ". $perso2->getEtat() . ".";
+."Il est de niveau"." ". $perso3->getLevel() ." ". "et il a une santé de " ." ". $perso3->getHealth() ."."." ". "Il est" ." ". $perso3->getEtat() . ".";
