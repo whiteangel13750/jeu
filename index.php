@@ -15,6 +15,12 @@ class Personnage {
         $this->etat =$etat;
     }
 
+    public function caracteristiques() {
+        
+        echo "Le personnage" . " ". $this->nom ." ". "a une force de " ." ". $this->force . "."
+        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->etat() . ".";
+    }
+
     public function etat() {
         if ($this->health >=1) {
             $etat = "vivant";
@@ -23,14 +29,6 @@ class Personnage {
         }
         return $etat;
     }
-
-
-    public function caracteristiques() {
-        
-        echo "Le personnage" . " ". $this->nom ." ". "a une force de " ." ". $this->force . "."
-        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->etat() . ".";
-    }
-
 
     public function getNom() {
         return $this->nom;
