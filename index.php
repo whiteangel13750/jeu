@@ -70,6 +70,11 @@ class Personnage {
         $this->etat = $etat;
     }
 
+    public function attaquer() {
+        $this->health = $this->health - $this->force;
+        return $this->health;
+    }
+
 };
 
 
@@ -109,9 +114,4 @@ echo "Le personnage" . " ". $perso2->getNom() ." ". "a une force de " ." ". $per
 echo "Le personnage" . " ". $perso1->getNom() ." ". "a une force de " ." ". $perso1->getForce() . "."
 ."Il est de niveau"." ". $perso1->getLevel() ." ". "et il a une santé de " ." ". $perso1->getHealth()."."." ". "Il est" ." ". $perso1->etat() . ".";
 
-function attaquer() {
-    $perso2->getHealth() == $perso2->getHealth() -- $perso1->getForce();
-    return $perso2->getHealth();
-}
-
-echo "Le joueur perd" . attaquer() ."points de vie";
+echo "Le joueur perd" . $this->attaquer() ."points de vie";
