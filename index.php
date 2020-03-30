@@ -7,11 +7,9 @@ class Personnage {
     public $health;
     public $etat;
 
-    $etat = isset($_POST['etat'])? "Vivant(e)" : "Mort" ;
-
     public function caracteristiques() {
         echo "Le personnage" . $this->nom . "a une force de " . $this->force . "."
-        ."Il est de niveau". $this->level . "et il a une santé de " . $this->health . "Il est" . $this->etat . "."
+        ."Il est de niveau". $this->level . "et il a une santé de " . $this->health . "Il est" . $this->etat . ".";
     };
 };
 
@@ -34,4 +32,5 @@ $perso3->level = 1;
 $perso3->health = 0;
 $perso3->etat = false;
 
+$etat = isset($_POST['etat'])? "Vivant(e)" : "Mort" ;
 
