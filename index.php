@@ -15,11 +15,11 @@ class Personnage {
         $this->etat =$etat;
     }
 
-    // public function caracteristiques() {
+    public function caracteristiques() {
         
-    //     echo "Le personnage" . " ". $this->nom ." ". "a une force de " ." ". $this->force . "."
-    //     ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->etat() . ".";
-    // }
+        echo "Le personnage" . " ". $this->nom ." ". "a une force de " ." ". $this->force . "."
+        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->etat() . ".";
+    }
 
     public function etat() {
         if ($this->health >=1) {
@@ -58,11 +58,6 @@ class Personnage {
         return $this->health;
     }
 
-    public function attaquer() {
-        $this->health = $this->health - $this->force;
-        return $this->health;
-    }
-
     public function setHealth($health) {
         $this->health = $health;
     }
@@ -74,8 +69,6 @@ class Personnage {
     public function setEtat($etat) {
         $this->etat = $etat;
     }
-
-
 
 };
 
@@ -95,10 +88,30 @@ $perso2->setHealth(35);
 $perso2->setEtat("mort");
 
 
+function etat() {
+    if ($this->health >=1) {
+        $etat = "vivant";
+    }else {
+        $etat = "mort";
+    }
+    return $etat;
+}
+
+function caracteristiques() {
+        
+    echo "Le personnage" . " ". $this->nom ." ". "a une force de " ." ". $this->force . "."
+    ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->etat() . ".";
+};
+
 echo "Le personnage" . " ". $perso2->getNom() ." ". "a une force de " ." ". $perso2->getForce() . "."
 ."Il est de niveau"." ". $perso2->getLevel() ." ". "et il a une santé de " ." ". $perso2->getHealth()."."." ". "Il est" ." ". $perso2->getEtat() . ".";
 
 echo "Le personnage" . " ". $perso1->getNom() ." ". "a une force de " ." ". $perso1->getForce() . "."
-."Il est de niveau"." ". $perso1->getLevel() ." ". "et il a une santé de " ." ". $perso1->getHealth()."."." ". "Il est" ." ". $perso1->getEtat() . ".";
+."Il est de niveau"." ". $perso1->getLevel() ." ". "et il a une santé de " ." ". $perso1->getHealth()."."." ". "Il est" ." ". $perso1->etat() . ".";
 
-echo "Le joueur perd" . $perso1->attaquer() ."points de vie";
+function attaquer() {
+    $perso2->getHealth() == $perso2->getHealth() -- $perso1->getForce();
+    return $perso2->getHealth();
+}
+
+echo "Le joueur perd" . attaquer() ."points de vie";
