@@ -70,6 +70,10 @@ class Personnage {
         $this->etat = $etat;
     }
 
+    public function attaquer() {
+        $this->health = $health-10;
+    }
+
 };
 
 
@@ -90,4 +94,10 @@ $perso2->setEtat("mort");
 echo "Le personnage" . " ". $perso2->getNom() ." ". "a une force de " ." ". $perso2->getForce() . "."
 ."Il est de niveau"." ". $perso2->getLevel() ." ". "et il a une santé de " ." ". $perso2->getHealth() ."."." ". "Il est" ." ". $perso2->getEtat() . ".";
 
+echo "Le personnage" . " ". $perso1->getNom() ." ". "a une force de " ." ". $perso1->getForce() . "."
+."Il est de niveau"." ". $perso1->getLevel() ." ". "et il a une santé de " ." ". $perso1->getHealth() ."."." ". "Il est" ." ". $perso2->getEtat() . ".";
 
+echo "Le personnage" . " ". $perso3->getNom() ." ". "a une force de " ." ". $perso3->getForce() . "."
+."Il est de niveau"." ". $perso3->getLevel() ." ". "et il a une santé de " ." ". $perso3->getHealth() ."."." ". "Il est" ." ". $perso2->getEtat() . ".";
+
+1
