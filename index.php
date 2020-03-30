@@ -8,20 +8,20 @@ class Personnage {
     private $etat;
 
     public function __construct(string $nom, int $force, int $level=1,int $health, string $etat){
-        $this->nom =$nom;
-        $this->force =$force;
-        $this->level =$level;
-        $this->health=$health;
-        $this->etat =$etat;
+        $this->setNom($nom);
+        $this->setForce($force);
+        $this->setLevel($level);
+        $this->setHealth($health);
+        $this->setEtat();
     }
 
     public function caracteristiques() {
         
         echo "Le personnage" . " ". $this->nom ." ". "a une force de " ." ". $this->force . "."
-        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->etat() . ".";
+        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->setEtat() . "<br>";
     }
 
-    public function etat() {
+    public function setEtat() {
         if ($this->health >=1) {
             $etat = "vivant";
         }else {
@@ -66,16 +66,11 @@ class Personnage {
         return $this->etat;
     }
 
-    public function setEtat($etat) {
-        $this->etat = $etat;
+    public function attaquer(Personnage $perso) {
+        $perso->setHealth($perso->getHealth() - $this->force);
+        $perso->setEtat();
     }
-
-    public function attaquer() {
-        $this->health = $this->health - $this->force;
-        return $this->health;
-    }
-
-};
+}
 
 
 $perso1 = new Personnage("Rose", 12,2,100,"");
@@ -84,7 +79,7 @@ $perso3 = new Personnage("Jean",6,1,0,"");
 
 $perso2->setNom("Ulrick");
 
-$perso2->setForce(50);
+$perso2->setForce(100);
 
 $perso2->setLevel(4);
 
@@ -92,26 +87,8 @@ $perso2->setHealth(35);
 
 $perso2->setEtat("mort");
 
-
-function etat() {
-    if ($this->health >=1) {
-        $etat = "vivant";
-    }else {
-        $etat = "mort";
-    }
-    return $etat;
-}
-
-function caracteristiques() {
-        
-    echo "Le personnage" . " ". $this->nom ." ". "a une force de " ." ". $this->force . "."
-    ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->etat() . ".";
-};
-
-echo "Le personnage" . " ". $perso2->getNom() ." ". "a une force de " ." ". $perso2->getForce() . "."
-."Il est de niveau"." ". $perso2->getLevel() ." ". "et il a une santé de " ." ". $perso2->getHealth()."."." ". "Il est" ." ". $perso2->getEtat() . ".";
-
-echo "Le personnage" . " ". $perso1->getNom() ." ". "a une force de " ." ". $perso1->getForce() . "."
-."Il est de niveau"." ". $perso1->getLevel() ." ". "et il a une santé de " ." ". $perso1->getHealth()."."." ". "Il est" ." ". $perso1->etat() . ".";
-
-echo "Le joueur perd" . $this->attaquer() ."points de vie";
+echo "Avant l'attaque : ";
+$perso2->caracteristiques();
+$perso1->attaquer($perso2);
+echo "Après l'attaque : ";
+$perso2->caracteristiques();
