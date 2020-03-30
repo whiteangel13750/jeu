@@ -91,6 +91,10 @@ $perso2->setHealth(35);
 
 $perso2->setEtat("mort");
 
+$perso1->setEtat("vivant");
+
+$perso3->setEtat("vivant");
+
 echo "Le personnage" . " ". $perso2->getNom() ." ". "a une force de " ." ". $perso2->getForce() . "."
 ."Il est de niveau"." ". $perso2->getLevel() ." ". "et il a une santé de " ." ". $perso2->getHealth() ."."." ". "Il est" ." ". $perso2->getEtat() . ".";
 
