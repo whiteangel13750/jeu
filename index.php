@@ -14,13 +14,13 @@ class Personnage {
         $this->setLevel($level);
         $this->setHealth($health);
         $this->setEtat();
-        $this->setType();
+        $this->setType($type);
     }
 
     public function caracteristiques() {
         
         echo "Le personnage" . " ". $this->nom ." ". "a une force de " ." ". $this->force . "."
-        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->setEtat() . "Il est de type". " ". $this->setType()."<br>";
+        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->setEtat() . "Il est de type". " ". $this->type."<br>";
     }
 
     public function setEtat() {
