@@ -73,8 +73,8 @@ class Personnage {
         $perso->setEtat();
     }
 
-    public function levelUp($perso) {
-        $perso->setLevel($perso->getLevel()+1);
+    public function levelUp() {
+        $this->setLevel($this->getLevel()+1);
     }
 
     public function setType($type) {
