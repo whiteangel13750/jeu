@@ -79,8 +79,6 @@ class Personnage {
     public function attaquer(Personnage $perso) {
         $perso->setEtat();
     }
-
-
 }
 
 class Guerrier extends Personnage {
@@ -95,9 +93,14 @@ class Guerrier extends Personnage {
         echo $this->nom. " "."de type". " ".Guerrier::class. " ". "vient de frapper ce personnage et lui inflige des dégats"."<br>";
     }
 
-    public function degats($perso) {
-        $perso->setHealth($perso->getHealth() - 50);
+    public function degats(Personnage $perso) {
+       
+    if ($perso instanceof Archer ) {
+       $perso->setHealth($perso->getHealth() - 30);
+    } else {
+        $perso->setHealth($perso->getHealth() - 10);
     }
+}
 
 }
 
@@ -113,10 +116,14 @@ class Sorcier extends Personnage {
         echo $this->nom. " "."de type". " ". Sorcier::class. " "."vient de lancer un sort contre ce personnage et lui inflige des dégats"."<br>";
     }
 
-    public function degats($perso) {
-        $perso->setHealth($perso->getHealth() - 100);
+    public function degats(Personnage $perso) {
+       
+        if ($perso instanceof Archer ) {
+           $perso->setHealth($perso->getHealth() - 60);
+        } else {
+            $perso->setHealth($perso->getHealth() - 100);
+        }
     }
-
 }
 
 class Archer extends Personnage {
@@ -131,16 +138,23 @@ class Archer extends Personnage {
         echo $this->nom. " "."de type". " ". Archer::class. " ". "vient de lancer plusieurs flèches contre ce personnage et lui inflige des dégats"."<br>";
     }
 
-    public function degats($perso) {
-        $perso->setHealth($perso->getHealth() - 40);
+    public function degats(Personnage $perso) {
+       
+        if ($perso instanceof Guerrier ) {
+           $perso->setHealth($perso->getHealth() - 40);
+        } else {
+            $perso->setHealth($perso->getHealth() - 60);
+        }
     }
 
 }
 
 
+
 $perso1 = new Archer("Rose", 12,2,100,"", "Archer");
-$perso2 = new Sorcier("Jules",15,1,50,"","Sorcier");
-$perso3 = new Guerrier("Jean",6,1,0,"", "Guerrier");
+$perso2 = new Sorcier("Jules",15,1,100,"","Sorcier");
+$perso3 = new Guerrier("Jean",6,1,100,"", "Guerrier");
+
 
 // $perso1->caracteristiques();
 // $perso2->caracteristiques();
@@ -153,8 +167,8 @@ $perso3 = new Guerrier("Jean",6,1,0,"", "Guerrier");
 // $perso2->caracteristiques();
 
 echo "Avant l'attaque : ";
-$perso1->caracteristiques();
-$perso2->attaquer($perso1);
+$perso2->caracteristiques();
+$perso3->attaquer($perso2);
 echo "Après l'attaque : ";
-$perso1->caracteristiques();
+$perso2->caracteristiques();
 
