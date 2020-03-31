@@ -20,7 +20,7 @@ class Guerrier {
     public function caracteristiques() {
         
         echo "Le personnage" . " ". $this->nom ." ". "a une force de " ." ". $this->force . "."
-        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->setEtat() . "Il est de type". " ". $this->type."<br>";
+        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->setEtat()."."." "."Il est de type". " ". $this->type."."." "."<br>";
     }
 
     public function setEtat() {
@@ -104,7 +104,7 @@ class Sorcier {
     public function caracteristiques() {
         
         echo "Le personnage" . " ". $this->nom ." ". "a une force de " ." ". $this->force . "."
-        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->setEtat() . "Il est de type". " ". $this->type."<br>";
+        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->setEtat()."."." "."Il est de type". " ". $this->type."<br>";
     }
 
     public function setEtat() {
@@ -187,7 +187,7 @@ class Archer {
     public function caracteristiques() {
         
         echo "Le personnage" . " ". $this->nom ." ". "a une force de " ." ". $this->force . "."
-        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->setEtat() . "Il est de type". " ". $this->type."<br>";
+        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->setEtat()."."." "."Il est de type". " ". $this->type."<br>";
     }
 
     public function setEtat() {
@@ -262,7 +262,7 @@ $perso3->caracteristiques();
 
 echo "Avant l'attaque : ";
 $perso2->caracteristiques();
-$perso3->frapper($perso2);
+$perso1->tirer($perso2);
 echo "Après l'attaque : ";
 $perso2->caracteristiques();
 
