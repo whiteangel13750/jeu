@@ -82,6 +82,12 @@ class Guerrier {
         $perso->setEtat();
     }
 
+    public function attaquer($perso) {
+        $perso->setHealth($perso->getHealth() - $this->force);
+        echo "Le Guerrier vient de lancer une attaque contre ce personnage et lui inflige des dégats"."<br>";
+        $perso->setEtat();
+    }
+
 }
 
 class Sorcier {
@@ -158,6 +164,12 @@ class Sorcier {
 
     public function setType($type) {
         $this->type = $type;
+    }
+
+    public function attaquer($perso) {
+        $perso->setHealth($perso->getHealth() - $this->force);
+        echo "Le Sorcier vient de lancer une attaque contre ce personnage et lui inflige des dégats"."<br>";
+        $perso->setEtat();
     }
 
     public function lancerSort($perso) {
@@ -243,6 +255,12 @@ class Archer {
         $this->type = $type;
     }
 
+    public function attaquer($perso) {
+        $perso->setHealth($perso->getHealth() - $this->force);
+        echo "L'Archer vient de lancer une attaque contre ce personnage et lui inflige des dégats"."<br>";
+        $perso->setEtat();
+    }
+
     public function tirer($perso) {
         $perso->setHealth($perso->getHealth() - $this->force);
         echo "L'Archer vient de lancer plusieurs flèches contre ce personnage et lui inflige des dégats"."<br>";
@@ -268,7 +286,7 @@ $perso2->caracteristiques();
 
 echo "Avant l'attaque : ";
 $perso2->caracteristiques();
-$perso1->tirer($perso2);
+$perso1->attaquer($perso2);
 echo "Après l'attaque : ";
 $perso2->caracteristiques();
 
