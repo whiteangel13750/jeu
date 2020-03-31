@@ -70,6 +70,10 @@ class Personnage {
         $perso->setHealth($perso->getHealth() - $this->force);
         $perso->setEtat();
     }
+
+    public function levelUp(Personnage $perso) {
+        $perso->setLevel($perso->getLevel() +1);
+    }
 }
 
 
@@ -91,4 +95,10 @@ echo "Avant l'attaque : ";
 $perso2->caracteristiques();
 $perso1->attaquer($perso2);
 echo "Après l'attaque : ";
+$perso2->caracteristiques();
+
+echo "Un niveau inférieur ";
+$perso2->caracteristiques();
+$perso2->levelUp($perso2);
+echo "Un niveau superieur ";;
 $perso2->caracteristiques();
