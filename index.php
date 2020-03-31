@@ -171,4 +171,8 @@ $perso2->caracteristiques();
 $perso3->attaquer($perso2);
 echo "Après l'attaque : ";
 $perso2->caracteristiques();
-
+echo "Avant l'attaque : ";
+$perso2->caracteristiques();
+$perso3->attaquer($perso2);
+echo "Après l'attaque : ";
+$perso2->caracteristiques();
