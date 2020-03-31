@@ -78,7 +78,7 @@ class Guerrier {
 
     public function frapper($perso) {
         $perso->setHealth($perso->getHealth() - $this->force);
-        echo "Le Guerrier vient de frapper ce personnage et lui inflige des dégats";
+        echo "Le Guerrier vient de frapper ce personnage et lui inflige des dégats"."<br>";
         $perso->setEtat();
     }
 
@@ -162,7 +162,7 @@ class Sorcier {
 
     public function lancerSort($perso) {
         $perso->setHealth($perso->getHealth() - $this->force);
-        echo "Le Sorcier vient de lancer un sort contre ce personnage et lui inflige des dégats";
+        echo "Le Sorcier vient de lancer un sort contre ce personnage et lui inflige des dégats"."<br>";
         $perso->setEtat();
     }
 }
@@ -245,7 +245,7 @@ class Archer {
 
     public function tirer($perso) {
         $perso->setHealth($perso->getHealth() - $this->force);
-        echo "L'Archer vient de lancer plusieurs flèches contre ce personnage et lui inflige des dégats";
+        echo "L'Archer vient de lancer plusieurs flèches contre ce personnage et lui inflige des dégats"."<br>";
         $perso->setEtat();
     }
 
@@ -260,14 +260,15 @@ $perso1->caracteristiques();
 $perso2->caracteristiques();
 $perso3->caracteristiques();
 
+echo "Un niveau inférieur ";
+$perso2->caracteristiques();
+$perso2->levelUp($perso2);
+echo "Un niveau superieur ";;
+$perso2->caracteristiques();
+
 echo "Avant l'attaque : ";
 $perso2->caracteristiques();
 $perso1->tirer($perso2);
 echo "Après l'attaque : ";
 $perso2->caracteristiques();
 
-echo "Un niveau inférieur ";
-$perso2->caracteristiques();
-$perso2->levelUp($perso2);
-echo "Un niveau superieur ";;
-$perso2->caracteristiques();
