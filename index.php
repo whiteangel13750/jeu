@@ -69,6 +69,7 @@ class Personnage {
     }
 
     public function levelUp() {
+        echo "Suite à ce combat, le personnage vient de monter de niveau :"."<br>";
         $this->setLevel($this->getLevel()+1);
     }
 
@@ -171,8 +172,48 @@ $perso2->caracteristiques();
 $perso3->attaquer($perso2);
 echo "Après l'attaque : ";
 $perso2->caracteristiques();
+echo "<br>";
+echo "Avant l'attaque : ";
+$perso1->caracteristiques();
+$perso3->attaquer($perso1);
+echo "Après l'attaque : ";
+$perso1->caracteristiques();
+echo "<br>";
 echo "Avant l'attaque : ";
 $perso2->caracteristiques();
 $perso3->attaquer($perso2);
 echo "Après l'attaque : ";
+$perso2->caracteristiques();
+echo "<br>";
+echo "Avant l'attaque : ";
+$perso2->caracteristiques();
+$perso3->attaquer($perso2);
+echo "Après l'attaque : ";
+$perso2->caracteristiques();
+echo "<br>";
+echo "Avant l'attaque : ";
+$perso1->caracteristiques();
+$perso3->attaquer($perso1);
+echo "Après l'attaque : ";
+$perso1->caracteristiques();
+echo "<br>";
+echo "Avant l'attaque : ";
+$perso2->caracteristiques();
+$perso3->attaquer($perso2);
+echo "Après l'attaque : ";
+$perso2->caracteristiques();
+echo "<br>";
+echo "Avant l'attaque : ";
+$perso3->caracteristiques();
+$perso2->attaquer($perso3);
+echo "Après l'attaque : ";
+$perso3->caracteristiques();
+echo "<br>";
+echo "Avant l'attaque : ";
+$perso3->caracteristiques();
+$perso2->attaquer($perso3);
+echo "Après l'attaque : ";
+$perso3->caracteristiques();
+echo "<br>";
+$perso2->levelUp();
 $perso2->caracteristiques();
