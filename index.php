@@ -7,20 +7,22 @@ class Personnage {
     protected $health;
     protected $etat;
     protected $type;
+    protected $experience;
 
-    public function __construct(string $nom, int $force, int $level=1,int $health, string $etat, string $type){
+    public function __construct(string $nom, int $force, int $level=1,int $health, string $etat, string $type, int $experience){
         $this->setNom($nom);
         $this->setForce($force);
         $this->setLevel($level);
         $this->setHealth($health);
         $this->setEtat();
         $this->setType($type);
+        $this->setExperience($experience);
     }
 
     public function caracteristiques() {
         
         echo "Le personnage" . " ". $this->nom ." ". "a une force de " ." ". $this->force . "."
-        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->setEtat()."."." "."Il est de type". " ". $this->type."."." "."<br>";
+        ."Il est de niveau"." ". $this->level ." ". "et il a une santé de " ." ". $this->health ."."." ". "Il est" ." ". $this->setEtat()."."." "."Il est de type". " ". $this->type."."." "."Son experience est de :".$this->experience."xp"."<br>";
     }
 
     public function setEtat() {
@@ -77,6 +79,14 @@ class Personnage {
         $this->type = $type;
     }
 
+    public function setExperience($experience) {
+        $this->experience = $experience;
+    }
+
+    public function getExperience() {
+       return $this->experience;
+    }
+
     public function attaquer(Personnage $perso) {
         $perso->setEtat();
     }
@@ -98,8 +108,10 @@ class Guerrier extends Personnage {
        
     if ($perso instanceof Archer ) {
        $perso->setHealth($perso->getHealth() - 30);
+       $this->setExperience($this->getExperience()+50);
     } else {
         $perso->setHealth($perso->getHealth() - 10);
+        $this->setExperience($this->getExperience()+50);
     }
 }
 
@@ -121,8 +133,10 @@ class Sorcier extends Personnage {
        
         if ($perso instanceof Archer ) {
            $perso->setHealth($perso->getHealth() - 60);
+           $this->setExperience($this->getExperience()+50);
         } else {
             $perso->setHealth($perso->getHealth() - 100);
+            $this->setExperience($this->getExperience()+50);
         }
     }
 }
@@ -143,8 +157,10 @@ class Archer extends Personnage {
        
         if ($perso instanceof Guerrier ) {
            $perso->setHealth($perso->getHealth() - 40);
+           $this->setExperience($this->getExperience()+50);
         } else {
             $perso->setHealth($perso->getHealth() - 60);
+            $this->setExperience($this->getExperience()+50);
         }
     }
 
@@ -152,9 +168,9 @@ class Archer extends Personnage {
 
 
 
-$perso1 = new Archer("Rose", 12,2,100,"", "Archer");
-$perso2 = new Sorcier("Jules",15,1,100,"","Sorcier");
-$perso3 = new Guerrier("Jean",6,1,100,"", "Guerrier");
+$perso1 = new Archer("Rose", 12,2,100,"", "Archer", 0);
+$perso2 = new Sorcier("Jules",15,1,100,"","Sorcier",0);
+$perso3 = new Guerrier("Jean",6,1,100,"", "Guerrier",0);
 
 
 // $perso1->caracteristiques();
@@ -169,38 +185,51 @@ $perso3 = new Guerrier("Jean",6,1,100,"", "Guerrier");
 
 echo "Avant l'attaque : ";
 $perso2->caracteristiques();
+$perso1->attaquer($perso2);
+echo "Après l'attaque : ";
+$perso1->caracteristiques();
+$perso2->caracteristiques();
+echo "<br>";
+echo "Avant l'attaque : ";
+$perso1->caracteristiques();
+$perso2->attaquer($perso1);
+echo "Après l'attaque : ";
+$perso1->caracteristiques();
+$perso2->caracteristiques();
+echo "<br>";
+echo "Avant l'attaque : ";
+$perso2->caracteristiques();
+$perso1->attaquer($perso2);
+echo "Après l'attaque : ";
+$perso1->caracteristiques();
+$perso2->caracteristiques();
+echo "<br>";
+echo "Avant l'attaque : ";
+$perso2->caracteristiques();
 $perso3->attaquer($perso2);
 echo "Après l'attaque : ";
 $perso2->caracteristiques();
+$perso3->caracteristiques();
 echo "<br>";
 echo "Avant l'attaque : ";
 $perso1->caracteristiques();
 $perso3->attaquer($perso1);
 echo "Après l'attaque : ";
 $perso1->caracteristiques();
+$perso3->caracteristiques();
 echo "<br>";
 echo "Avant l'attaque : ";
 $perso2->caracteristiques();
 $perso3->attaquer($perso2);
 echo "Après l'attaque : ";
 $perso2->caracteristiques();
+$perso3->caracteristiques();
 echo "<br>";
 echo "Avant l'attaque : ";
-$perso2->caracteristiques();
-$perso3->attaquer($perso2);
+$perso3->caracteristiques();
+$perso2->attaquer($perso3);
 echo "Après l'attaque : ";
-$perso2->caracteristiques();
-echo "<br>";
-echo "Avant l'attaque : ";
-$perso1->caracteristiques();
-$perso3->attaquer($perso1);
-echo "Après l'attaque : ";
-$perso1->caracteristiques();
-echo "<br>";
-echo "Avant l'attaque : ";
-$perso2->caracteristiques();
-$perso3->attaquer($perso2);
-echo "Après l'attaque : ";
+$perso3->caracteristiques();
 $perso2->caracteristiques();
 echo "<br>";
 echo "Avant l'attaque : ";
@@ -208,12 +237,7 @@ $perso3->caracteristiques();
 $perso2->attaquer($perso3);
 echo "Après l'attaque : ";
 $perso3->caracteristiques();
-echo "<br>";
-echo "Avant l'attaque : ";
-$perso3->caracteristiques();
-$perso2->attaquer($perso3);
-echo "Après l'attaque : ";
-$perso3->caracteristiques();
+$perso2->caracteristiques();
 echo "<br>";
 $perso2->levelUp();
 $perso2->caracteristiques();
