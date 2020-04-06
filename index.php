@@ -5,10 +5,10 @@ Interface Attaquant {
 }
 
 Interface Cible {
-    function subirDegats(Personnage $perso);
+    function subirDegats();
 }
 
-abstract class Personnage implements Attaquant {
+abstract class Personnage implements Attaquant, Cible{
     protected $nom;
     protected $force;
     protected $level;
@@ -96,9 +96,7 @@ abstract class Personnage implements Attaquant {
        return $this->experience;
     }
 
-    public function subirDegats() {
-       $this->health -= rand(0,100);
-     }
+    abstract function subirDegats();
 
     abstract function attaquer(Personnage $perso);
 
@@ -109,7 +107,6 @@ class Guerrier extends Personnage {
     public function attaquer(Personnage $perso) {
         $this->frapper();
         $this->degats($perso);
-        $this->subirDegats($perso);
         {
             $perso->setEtat();
         }
@@ -122,10 +119,14 @@ class Guerrier extends Personnage {
     public function degats(Personnage $perso) {
        
     if ($perso instanceof Archer ) {
-       $perso->subirDegats();
+        {
+            $this->health -= rand(0,100);
+          }
        $this->setExperience($this->getExperience()+50);
     } else {
-        $perso->subirDegats();
+        {
+            $this->health -= rand(0,100);
+          }
         $this->setExperience($this->getExperience()+50);
     }
 }
@@ -137,7 +138,6 @@ class Sorcier extends Personnage {
     public function attaquer(Personnage $perso) {
         $this->lancerSort();
         $this->degats($perso);
-        $this->subirDegats($perso);
         {
             $perso->setEtat();
         }
@@ -150,10 +150,14 @@ class Sorcier extends Personnage {
     public function degats(Personnage $perso) {
        
         if ($perso instanceof Archer ) {
-            $perso->subirDegats();
+            {
+                $this->health -= rand(0,100);
+              }
             $this->setExperience($this->getExperience()+50);
         } else {
-            $perso->subirDegats();
+            {
+                $this->health -= rand(0,100);
+              }
             $this->setExperience($this->getExperience()+50);
         }
     }
@@ -164,7 +168,6 @@ class Archer extends Personnage {
     public function attaquer(Personnage $perso) {
         $this->tirer();
         $this->degats($perso);
-        $this->subirDegats($perso);
         {
             $perso->setEtat();
         }
@@ -177,10 +180,14 @@ class Archer extends Personnage {
     public function degats(Personnage $perso) {
        
         if ($perso instanceof Guerrier ) {
-            $perso->subirDegats();
+            {
+                $this->health -= rand(0,100);
+              }
            $this->setExperience($this->getExperience()+50);
         } else {
-            $perso->subirDegats();
+            {
+                $this->health -= rand(0,100);
+              }
             $this->setExperience($this->getExperience()+50);
         }
     }
