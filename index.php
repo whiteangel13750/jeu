@@ -1,6 +1,14 @@
 <?php
 
-class Personnage {
+Interface Attaquant {
+    function attaquer(Personnage $perso);
+}
+
+Interface Cible {
+    function subirDegats(Personnage $perso);
+}
+
+abstract class Personnage implements Attaquant {
     protected $nom;
     protected $force;
     protected $level;
@@ -8,6 +16,7 @@ class Personnage {
     protected $etat;
     protected $type;
     protected $experience;
+    protected $degats;
 
     public function __construct(string $nom, int $force, int $level=1,int $health, string $etat, string $type, int $experience){
         $this->setNom($nom);
@@ -71,7 +80,7 @@ class Personnage {
     }
 
     public function levelUp() {
-        echo "Suite à ce combat, le personnage vient de monter de niveau :"."<br>";
+        echo "Suite a ce combat, le personnage vient de monter de niveau :"."<br>";
         $this->setLevel($this->getLevel()+1);
     }
 
@@ -87,9 +96,12 @@ class Personnage {
        return $this->experience;
     }
 
-    public function attaquer(Personnage $perso) {
-        $perso->setEtat();
-    }
+    public function subirDegats() {
+       $this->health -= rand(0,100);
+     }
+
+    abstract function attaquer(Personnage $perso);
+
 }
 
 class Guerrier extends Personnage {
@@ -97,7 +109,10 @@ class Guerrier extends Personnage {
     public function attaquer(Personnage $perso) {
         $this->frapper();
         $this->degats($perso);
-        parent::attaquer($perso);
+        $this->subirDegats($perso);
+        {
+            $perso->setEtat();
+        }
     }
 
     public function frapper() {
@@ -107,10 +122,10 @@ class Guerrier extends Personnage {
     public function degats(Personnage $perso) {
        
     if ($perso instanceof Archer ) {
-       $perso->setHealth($perso->getHealth() - 30);
+       $perso->subirDegats();
        $this->setExperience($this->getExperience()+50);
     } else {
-        $perso->setHealth($perso->getHealth() - 10);
+        $perso->subirDegats();
         $this->setExperience($this->getExperience()+50);
     }
 }
@@ -122,7 +137,10 @@ class Sorcier extends Personnage {
     public function attaquer(Personnage $perso) {
         $this->lancerSort();
         $this->degats($perso);
-        parent::attaquer($perso);
+        $this->subirDegats($perso);
+        {
+            $perso->setEtat();
+        }
     }
 
     public function lancerSort() {
@@ -132,10 +150,10 @@ class Sorcier extends Personnage {
     public function degats(Personnage $perso) {
        
         if ($perso instanceof Archer ) {
-           $perso->setHealth($perso->getHealth() - 60);
-           $this->setExperience($this->getExperience()+50);
+            $perso->subirDegats();
+            $this->setExperience($this->getExperience()+50);
         } else {
-            $perso->setHealth($perso->getHealth() - 100);
+            $perso->subirDegats();
             $this->setExperience($this->getExperience()+50);
         }
     }
@@ -146,7 +164,10 @@ class Archer extends Personnage {
     public function attaquer(Personnage $perso) {
         $this->tirer();
         $this->degats($perso);
-        parent::attaquer($perso);      
+        $this->subirDegats($perso);
+        {
+            $perso->setEtat();
+        }
     }
 
     public function tirer() {
@@ -156,13 +177,21 @@ class Archer extends Personnage {
     public function degats(Personnage $perso) {
        
         if ($perso instanceof Guerrier ) {
-           $perso->setHealth($perso->getHealth() - 40);
+            $perso->subirDegats();
            $this->setExperience($this->getExperience()+50);
         } else {
-            $perso->setHealth($perso->getHealth() - 60);
+            $perso->subirDegats();
             $this->setExperience($this->getExperience()+50);
         }
     }
+}
+
+class Creature implements Attaquant {
+        function attaquer(Personnage $perso) {
+         $perso->setHealth($perso->getHealth()-rand(0,100));
+         echo "Une créature vient d'attaquer le personnage"."<br>";
+        }
+
 
 }
 
@@ -171,6 +200,8 @@ class Archer extends Personnage {
 $perso1 = new Archer("Rose", 12,2,100,"", "Archer", 0);
 $perso2 = new Sorcier("Jules",15,1,100,"","Sorcier",0);
 $perso3 = new Guerrier("Jean",6,1,100,"", "Guerrier",0);
+
+$creature = new Creature();
 
 
 // $perso1->caracteristiques();
@@ -227,7 +258,7 @@ $perso3->caracteristiques();
 echo "<br>";
 echo "Avant l'attaque : ";
 $perso3->caracteristiques();
-$perso2->attaquer($perso3);
+$creature->attaquer($perso3);
 echo "Après l'attaque : ";
 $perso3->caracteristiques();
 $perso2->caracteristiques();
