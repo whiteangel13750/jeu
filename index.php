@@ -120,10 +120,10 @@ class Guerrier extends Personnage implements Cible{
        
     if ($perso instanceof Archer ) {
         $perso->subirDegats();
-       $this->setExperience($this->getExperience()+50);
+       $this->setExperience($this->getExperience()+rand(0,100));
     } else {
         $perso->subirDegats();
-        $this->setExperience($this->getExperience()+50);
+        $this->setExperience($this->getExperience()+rand(0,100));
     }
 }
 
@@ -151,10 +151,10 @@ class Sorcier extends Personnage implements Cible {
        
         if ($perso instanceof Archer ) {
             $perso->subirDegats();
-            $this->setExperience($this->getExperience()+50);
+            $this->setExperience($this->getExperience()+rand(0,100));
         } else {
             $perso->subirDegats();
-            $this->setExperience($this->getExperience()+50);
+            $this->setExperience($this->getExperience()+rand(0,100));
         }
     }
 
@@ -182,10 +182,10 @@ class Archer extends Personnage implements Cible {
        
         if ($perso instanceof Guerrier ) {
             $perso->subirDegats();
-           $this->setExperience($this->getExperience()+50);
+           $this->setExperience($this->getExperience()+rand(0,100));
         } else {
             $perso->subirDegats();
-            $this->setExperience($this->getExperience()+50);
+            $this->setExperience($this->getExperience()+rand(0,100));
         }
     }
 
