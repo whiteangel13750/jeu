@@ -1,6 +1,6 @@
 <?php
 
-Interface Attaquant {
+Interface Attaquant{
     function attaquer(Personnage $perso);
 }
 
@@ -189,27 +189,28 @@ class Archer extends Personnage implements Cible {
         }
     }
 
-    public function subirDegats(){
-        $this->health -= rand(0,100);
-}
-}
+            public function subirDegats(){
+                $this->health -= rand(0,100);
+        }
+    }
 
-class Creature implements Attaquant {
+class Creature extends Personnage implements Attaquant, Cible {
         function attaquer(Personnage $perso) {
          $perso->setHealth($perso->getHealth()-rand(0,100));
          echo "Une créature vient d'attaquer le personnage"."<br>";
         }
 
+        public function subirDegats(){
+            $this->health -= rand(0,100);
+    }
 
 }
-
-
 
 $perso1 = new Archer("Rose", 12,2,100,"", "Archer", 0);
 $perso2 = new Sorcier("Jules",15,1,100,"","Sorcier",0);
 $perso3 = new Guerrier("Jean",6,1,100,"", "Guerrier",0);
 
-$creature = new Creature();
+$creature = new Creature("Sanglier",6,1,100,"", "Creature",0);
 
 
 // $perso1->caracteristiques();
@@ -272,10 +273,10 @@ $perso3->caracteristiques();
 $perso2->caracteristiques();
 echo "<br>";
 echo "Avant l'attaque : ";
-$perso3->caracteristiques();
-$perso2->attaquer($perso3);
+$creature->caracteristiques();
+$perso2->attaquer($creature);
 echo "Après l'attaque : ";
-$perso3->caracteristiques();
+$creature->caracteristiques();
 $perso2->caracteristiques();
 echo "<br>";
 $perso2->levelUp();
